@@ -16,13 +16,23 @@ Every quiz file must follow this exact structure:
 ---
 title: "Quiz Title"
 tags: [topic, subtopic]
+time_limit: 30
+allow_overrun: true
+random_order: false
 note: "Sample study questions — not affiliated with or sourced from official exams"
 ---
 ```
 
-- `title` — required
-- `tags` — optional, lowercase, used for filtering
-- `note` — always include the disclaimer above
+| Field | Required | Default | Description |
+|-------|----------|---------|-------------|
+| `title` | Yes | — | Quiz title displayed to the student |
+| `tags` | No | `[]` | Lowercase tags for filtering, e.g. `[azure, identity, az-305]` |
+| `time_limit` | No | untimed | Time limit in minutes. Omit or set to `0` for no time limit. |
+| `allow_overrun` | No | `true` | If `true`, students can continue answering after the timer expires (answers still recorded). If `false`, the quiz auto-submits when time runs out. |
+| `random_order` | No | `false` | If `true`, questions are shuffled into a random order for each attempt. |
+| `note` | No | — | Displayed as a notice. For this repo, always include the disclaimer. |
+
+`version` is accepted in frontmatter but ignored — the platform tracks versions automatically when a quiz is re-uploaded.
 
 ### Questions
 
